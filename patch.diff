@@ -1,0 +1,15 @@
+diff --git a/mwsauth.py b/mwsauth.py
+index b2cc426..9abe75c 100644
+--- a/mwsauth.py
++++ b/mwsauth.py
+@@ -40,8 +40,8 @@ class MWSAuth(requests.auth.AuthBase):
+     @staticmethod
+     def _gen_signature(client_secret, method, path, http_date):
+         str_to_sign = "%s %s\n%s" % (method, path, http_date)
+-        signature = base64.b64encode(hmac.new(client_secret, str_to_sign, hashlib.sha1).digest())
+-        return signature
++        signature = base64.b64encode(hmac.new(client_secret, str_to_sign.encode(), hashlib.sha1).digest())
++        return signature.decode('utf-8')
+ 
+     @staticmethod
+     def _gen_authorization(client_id, signature):

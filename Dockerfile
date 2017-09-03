@@ -12,13 +12,18 @@ RUN cd /opt/conda/lib/python3.6/site-packages/pytalos && 2to3 -w . && patch < /t
 
 # Build and Install talos widget
 RUN /bin/echo -e "progress=true\nregistry=https://registry.npm.taobao.org/" > $HOME/.npmrc
+
 RUN git clone https://github.com/qzchenwl/jupyter_widget_talos $HOME/.local/share/jupyter_widget_talos
+
 RUN cd $HOME/.local/share/jupyter_widget_talos && python setup.py build && pip install -e . && jupyter nbextension install --py --symlink --sys-prefix jupyter_widget_talos && jupyter nbextension enable --py --sys-prefix jupyter_widget_talos
 
 
 # Custom jupyter and ipython config
 RUN ipython profile create
 RUN jupyter notebook --generate-config
+
 ADD 99-talos.py $HOME/.ipython/profile_default/startup/
 ADD jupyter_notebook_config.py $HOME/.jupyter/
 
+RUN mkdir -pv $HOME/.jupyter/custom/
+ADD custom.js $HOME/.jupyter/custom/

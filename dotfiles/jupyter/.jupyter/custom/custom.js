@@ -1,6 +1,8 @@
 require(['notebook/js/codecell'], function(codecell) {
 
-  codecell.CodeCell.options_default.highlight_modes['magic_sql'] = {'reg':[/^%%talos/]} ;
+  codecell.CodeCell.options_default.highlight_modes['magic_text/x-sql'] = {
+    reg: [/^%%talos/]
+  };
 
   if (!Jupyter.notebook) {
     return;

@@ -30,6 +30,10 @@ RUN cd $HOME/.local/share/jupyter_widget_talos && \
     jupyter nbextension install --py --symlink --sys-prefix jupyter_widget_talos && \
     jupyter nbextension enable --py --sys-prefix jupyter_widget_talos
 
+# JupyterLab
+
+RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
+
 # Custom jupyter and ipython config
 
 RUN ipython profile create

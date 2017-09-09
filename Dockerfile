@@ -23,8 +23,9 @@ USER $NB_USER
 
 # Build and Install talos widget
 
-RUN git clone https://github.com/qzchenwl/jupyter_widget_talos $HOME/.local/share/jupyter_widget_talos
-RUN cd $HOME/.local/share/jupyter_widget_talos && \
+RUN git clone https://github.com/qzchenwl/jupyter_widget_talos $HOME/.local/share/jupyter_widget_talos && \
+    cd $HOME/.local/share/jupyter_widget_talos && \
+    git checkout d097fed && \
     python setup.py build && \
     pip install -e . && \
     jupyter nbextension install --py --symlink --sys-prefix jupyter_widget_talos && \

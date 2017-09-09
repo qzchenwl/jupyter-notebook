@@ -1,5 +1,6 @@
 from __future__ import print_function
 import time
+from IPython.display import clear_output
 from IPython.core.magic import (Magics, magics_class, line_magic,
                                 cell_magic, line_cell_magic)
 
@@ -25,6 +26,7 @@ class TalosMagics(Magics):
         display(w)
         while w.update():
             time.sleep(1)
+        clear_output()
         return w
 
 

@@ -21,6 +21,10 @@ RUN apt-get update && apt-get install -y stow
 
 USER $NB_USER
 
+# Install packages
+
+RUN pip install openpyxl bokeh plotly
+
 # Build and Install talos widget
 
 RUN git clone https://github.com/qzchenwl/jupyter_widget_talos $HOME/.local/share/jupyter_widget_talos && \

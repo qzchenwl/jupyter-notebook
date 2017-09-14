@@ -23,7 +23,7 @@ USER $NB_USER
 
 # Install packages
 
-RUN pip install openpyxl bokeh plotly
+RUN pip install openpyxl bokeh plotly cufflinks
 
 # Build and Install talos widget
 

@@ -24,12 +24,15 @@ USER $NB_USER
 # Install packages
 
 RUN pip install openpyxl bokeh plotly cufflinks
+#ADD https://codeload.github.com/matplotlib/basemap/tar.gz/v1.0.7rel /tmp/basemap
+ADD http://home.chenwl.com:1024/share/v1.0.7rel /tmp/basemap
+RUN cd /tmp/basemap && ls
 
 # Build and Install talos widget
 
 RUN git clone https://github.com/qzchenwl/jupyter_widget_talos $HOME/.local/share/jupyter_widget_talos && \
     cd $HOME/.local/share/jupyter_widget_talos && \
-    git checkout 4e6f72c && \
+    git checkout 5d243dd && \
     python setup.py build && \
     pip install -e . && \
     jupyter nbextension install --py --symlink --sys-prefix jupyter_widget_talos && \

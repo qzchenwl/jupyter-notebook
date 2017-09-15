@@ -25,19 +25,20 @@ USER $NB_USER
 
 RUN pip install openpyxl bokeh plotly cufflinks
 
-# Build and Install talos widget
-
-RUN git clone https://github.com/qzchenwl/jupyter_widget_talos $HOME/.local/share/jupyter_widget_talos && \
-    cd $HOME/.local/share/jupyter_widget_talos && \
-    git checkout 5d243dd && \
-    python setup.py build && \
-    pip install -e . && \
-    jupyter nbextension install --py --symlink --sys-prefix jupyter_widget_talos && \
-    jupyter nbextension enable --py --sys-prefix jupyter_widget_talos
-
 # JupyterLab
 
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
+
+# Build and Install talos widget
+
+RUN git clone  https://github.com/qzchenwl/ipytalos $HOME/.local/share/ipytalos && \
+    cd $HOME/.local/share/ipytalos && \
+    git checkout 735914b && \
+    python setup.py build && \
+    pip install -e . && \
+    jupyter nbextension install --py --symlink --sys-prefix ipytalos && \
+    jupyter nbextension enable --py --sys-prefix ipytalos && \
+    jupyter labextension install ./jslab
 
 # Custom jupyter and ipython config
 

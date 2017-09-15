@@ -4,7 +4,7 @@ from IPython.display import clear_output
 from IPython.core.magic import (Magics, magics_class, line_magic,
                                 cell_magic, line_cell_magic)
 
-from jupyter_widget_talos import TalosWidget
+from ipytalos import Talos
 
 # The class MUST call this class decorator at creation time
 @magics_class
@@ -15,14 +15,14 @@ class TalosMagics(Magics):
         "my cell magic"
 
         engine, dsn = line.split(' ')
-        return TalosWidget(engine=engine, dsn=dsn, sql=cell)
+        return Talos(engine=engine, dsn=dsn, sql=cell)
 
     @cell_magic
     def talos2(self, line, cell):
         "my cell magic"
 
         engine, dsn = line.split(' ')
-        w = TalosWidget(engine=engine, dsn=dsn, sql=cell)
+        w = Talos(engine=engine, dsn=dsn, sql=cell)
         display(w)
         while w.update():
             time.sleep(1)

@@ -24,9 +24,6 @@ USER $NB_USER
 # Install packages
 
 RUN pip install openpyxl bokeh plotly cufflinks
-#ADD https://codeload.github.com/matplotlib/basemap/tar.gz/v1.0.7rel /tmp/basemap
-ADD http://home.chenwl.com:1024/share/v1.0.7rel /tmp/basemap
-RUN cd /tmp/basemap && ls
 
 # Build and Install talos widget
 

@@ -37,7 +37,7 @@ RUN jupyter labextension install jupyterlab_bokeh
 
 RUN git clone  https://github.com/qzchenwl/ipytalos $HOME/.local/share/ipytalos && \
     cd $HOME/.local/share/ipytalos && \
-    git checkout 735914b && \
+    git checkout 7549f34 && \
     python setup.py build && \
     pip install -e . && \
     jupyter nbextension install --py --symlink --sys-prefix ipytalos && \

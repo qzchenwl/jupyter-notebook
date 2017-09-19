@@ -28,6 +28,10 @@ RUN pip install openpyxl bokeh plotly cufflinks
 # JupyterLab
 
 RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager
+RUN jupyter labextension install @jupyterlab/plotly-extension
+RUN jupyter labextension install @jupyterlab/json-extension
+RUN jupyter labextension install @jupyterlab/geojson-extension
+RUN jupyter labextension install jupyterlab_bokeh
 
 # Build and Install talos widget
 

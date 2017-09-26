@@ -1,4 +1,4 @@
-FROM jupyter/all-spark-notebook
+FROM jupyter/datascience-notebook
 
 MAINTAINER qzchenwl <qzchenwl@gmail.com>
 
@@ -35,14 +35,18 @@ RUN jupyter labextension install jupyterlab_bokeh
 
 # Build and Install talos widget
 
-RUN git clone  https://github.com/qzchenwl/ipytalos $HOME/.local/share/ipytalos && \
-    cd $HOME/.local/share/ipytalos && \
-    git checkout 7549f34 && \
-    python setup.py build && \
-    pip install -e . && \
-    jupyter nbextension install --py --symlink --sys-prefix ipytalos && \
-    jupyter nbextension enable --py --sys-prefix ipytalos && \
-    jupyter labextension install ./jslab
+RUN pip install ipytalos
+RUN jupyter nbextension enable --py --sys-prefix ipytalos
+RUN jupyter labextension install jupyterlab-talos
+
+#RUN git clone  https://github.com/qzchenwl/ipytalos $HOME/.local/share/ipytalos && \
+#    cd $HOME/.local/share/ipytalos && \
+#    git checkout 7549f34 && \
+#    python setup.py build && \
+#    pip install -e . && \
+#    jupyter nbextension install --py --symlink --sys-prefix ipytalos && \
+#    jupyter nbextension enable --py --sys-prefix ipytalos && \
+#    jupyter labextension install ./jslab
 
 # Custom jupyter and ipython config
 
